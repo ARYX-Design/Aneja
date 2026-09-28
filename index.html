@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BlissX Beauty — Glow, Crafted</title>
+<meta name="description" content="BlissX Beauty — luxury skin, lash, brow, nail and bridal beauty. Book your appointment and step into your glow.">
+<meta property="og:title" content="BlissX Beauty — Glow, Crafted">
+<meta property="og:description" content="Luxury skin, lash, brow, nail and bridal beauty. Book your glow today.">
+<meta name="theme-color" content="#1f1512">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231f1512'/><text x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='40' fill='%23e9c7b5'>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf4ef;
+    --blush:#f3dfd4;
+    --rose:#e9c7b5;
+    --rose-deep:#c98f7a;
+    --gold:#b98d58;
+    --espresso:#1f1512;
+    --cocoa:#3a2a24;
+    --muted:#7a6660;
+    --line:rgba(31,21,18,.12);
+    --radius:28px;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Manrope", system-ui, -apple-system, Segoe UI, sans-serif;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--cream);color:var(--espresso);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  html{overflow-x:clip}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+  .eyebrow{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;color:var(--rose-deep)}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.01em}
+  h2{font-size:clamp(2.4rem,5.5vw,4.2rem)}
+  h2 em,h1 em{font-style:italic;color:var(--rose-deep)}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:999px;font-weight:600;font-size:.92rem;letter-spacing:.02em;transition:transform .35s var(--ease),background .35s,color .35s,box-shadow .35s;cursor:pointer;border:0;font-family:inherit}
+  .btn-dark{background:var(--espresso);color:var(--cream)}
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(31,21,18,.55)}
+  .btn-ghost{border:1px solid var(--espresso);color:var(--espresso);background:transparent}
+  .btn-ghost:hover{background:var(--espresso);color:var(--cream)}
+  .btn-light{background:var(--cream);color:var(--espresso)}
+  .btn-light:hover{transform:translateY(-2px)}
+  .arrow{transition:transform .35s var(--ease)}
+  .btn:hover .arrow{transform:translateX(4px)}
+
+  /* ---------- NAV ---------- */
+  .nav{position:fixed;inset:16px 0 auto;z-index:50;transition:transform .4s var(--ease)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem .7rem .7rem 1.4rem;border-radius:999px;background:rgba(250,244,239,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.6);box-shadow:0 10px 40px -20px rgba(31,21,18,.35)}
+  .logo{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:.01em}
+  .logo span{font-style:italic;color:var(--rose-deep)}
+  .nav-links{display:flex;gap:2rem;font-size:.9rem;font-weight:500}
+  .nav-links a{position:relative;opacity:.8}
+  .nav-links a:hover{opacity:1}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:currentColor;transition:width .35s var(--ease)}
+  .nav-links a:hover::after{width:100%}
+  .nav .btn{padding:.75rem 1.2rem}
+  .burger{display:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--espresso);color:var(--cream);cursor:pointer}
+  .burger span{display:block;width:16px;height:1.5px;background:currentColor;margin:4px auto;transition:.3s}
+  .mobile-menu{position:fixed;inset:0;background:var(--espresso);color:var(--cream);z-index:40;display:flex;flex-direction:column;justify-content:center;padding:32px;gap:1.2rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+  .mobile-menu a{font-family:var(--serif);font-size:2.6rem}
+  .mobile-menu.open{opacity:1;pointer-events:auto}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100svh;padding:140px 0 60px;position:relative;overflow:hidden;display:flex;align-items:center}
+  .hero::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-250px;background:radial-gradient(circle,var(--rose) 0%,transparent 62%);opacity:.8;filter:blur(10px);animation:float 14s ease-in-out infinite}
+  .hero::after{content:"";position:absolute;width:600px;height:600px;left:-250px;bottom:-250px;background:radial-gradient(circle,#f6e6c8 0%,transparent 65%);opacity:.9;animation:float 18s ease-in-out infinite reverse}
+  @keyframes float{50%{transform:translate(-40px,40px) scale(1.05)}}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:4rem;align-items:center}
+  .hero h1{font-size:clamp(3.4rem,9vw,7.6rem);margin:1.2rem 0 1.6rem}
+  .hero h1 .line{display:block;overflow:hidden}
+  .hero h1 .line>span{display:inline-block;transform:translateY(110%);animation:rise 1.1s var(--ease) forwards}
+  .hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+  .hero h1 .line:nth-child(3)>span{animation-delay:.24s}
+  @keyframes rise{to{transform:none}}
+  .hero p.lead{font-size:1.12rem;max-width:30rem;color:var(--muted)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+  .hero-proof{display:flex;align-items:center;gap:1rem;margin-top:2.6rem;font-size:.88rem;color:var(--muted)}
+  .avatars{display:flex}
+  .avatars i{width:38px;height:38px;border-radius:50%;border:2px solid var(--cream);margin-left:-10px;display:block}
+  .avatars i:first-child{margin-left:0}
+  .stars{color:var(--gold);letter-spacing:2px}
+
+  .hero-art{position:relative;aspect-ratio:4/5;max-width:460px;justify-self:end;width:100%}
+  .arch{position:absolute;inset:0;border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;background:
+      radial-gradient(120% 80% at 30% 20%,#fff5ee 0%,transparent 55%),
+      radial-gradient(90% 70% at 80% 90%,var(--rose-deep) 0%,transparent 60%),
+      linear-gradient(160deg,var(--blush),var(--rose) 55%,#d6a592);
+    box-shadow:0 40px 80px -40px rgba(58,42,36,.55)}
+  .arch svg{position:absolute;inset:0;width:100%;height:100%}
+  .glow-orb{position:absolute;width:55%;aspect-ratio:1;border-radius:50%;left:22%;top:18%;background:radial-gradient(circle at 35% 30%,#fff 0%,#fbe7dc 30%,rgba(233,199,181,.2) 70%);filter:blur(1px);animation:breathe 6s ease-in-out infinite}
+  @keyframes breathe{50%{transform:scale(1.06)}}
+  .chip{position:absolute;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;padding:.9rem 1.1rem;box-shadow:0 20px 40px -20px rgba(31,21,18,.4);font-size:.82rem;display:flex;gap:.7rem;align-items:center;animation:bob 5s ease-in-out infinite}
+  .chip b{display:block;font-size:.95rem}
+  .chip .dot{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--espresso);color:var(--rose);font-family:var(--serif);font-size:1.2rem}
+  .chip.c1{left:-40px;top:16%}
+  .chip.c2{right:-24px;bottom:14%;animation-delay:-2.5s}
+  @keyframes bob{50%{transform:translateY(-10px)}}
+  .spin-badge{position:absolute;right:-18px;top:-18px;width:120px;height:120px;animation:spin 18s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--espresso);color:var(--cream);padding:1.4rem 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.04);margin:20px 0}
+  .marquee-track{display:flex;gap:3rem;width:max-content;animation:scroll 32s linear infinite;font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-style:italic}
+  .marquee-track span{display:flex;align-items:center;gap:3rem;white-space:nowrap}
+  .marquee-track span::after{content:"✦";font-style:normal;color:var(--rose);font-size:.8em}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:clamp(80px,12vw,140px) 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap}
+  .section-head p{max-width:26rem;color:var(--muted)}
+  .section-head h2{margin-top:.8rem}
+
+  /* services */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .svc{position:relative;padding:2rem;border-radius:var(--radius);background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s,color .5s;min-height:320px;display:flex;flex-direction:column;isolation:isolate}
+  .svc::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--cocoa),var(--espresso));z-index:-1;transform:translateY(101%);transition:transform .6s var(--ease)}
+  .svc:hover{transform:translateY(-6px);color:var(--cream);box-shadow:0 30px 60px -30px rgba(31,21,18,.6)}
+  .svc:hover::before{transform:none}
+  .svc:hover .svc-num,.svc:hover .svc-price{color:var(--rose)}
+  .svc:hover p{color:rgba(250,244,239,.72)}
+  .svc-icon{width:58px;height:58px;border-radius:18px;background:var(--blush);display:grid;place-items:center;margin-bottom:auto;transition:background .5s}
+  .svc:hover .svc-icon{background:rgba(233,199,181,.18)}
+  .svc-icon svg{width:28px;height:28px;stroke:var(--rose-deep);fill:none;stroke-width:1.4}
+  .svc-num{position:absolute;right:1.6rem;top:1.4rem;font-family:var(--serif);font-size:1rem;color:var(--muted);transition:color .5s}
+  .svc h3{font-size:2rem;margin:2rem 0 .5rem}
+  .svc p{color:var(--muted);font-size:.94rem;transition:color .5s}
+  .svc-price{margin-top:1.2rem;font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-deep);transition:color .5s}
+
+  /* about */
+  .about{background:var(--blush);border-radius:48px;margin:0 16px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .about-visual{position:relative;aspect-ratio:1;max-width:520px}
+  .about-visual .blob{position:absolute;inset:0;border-radius:44% 56% 62% 38% / 42% 44% 56% 58%;background:linear-gradient(135deg,var(--rose-deep),var(--rose) 50%,#fbeee6);animation:morph 12s ease-in-out infinite}
+  @keyframes morph{50%{border-radius:58% 42% 38% 62% / 56% 60% 40% 44%}}
+  .about-visual .quote{position:absolute;inset:14%;display:grid;place-items:center;text-align:center;font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.8rem);font-style:italic;color:var(--espresso);line-height:1.15}
+  .about p{color:var(--cocoa);margin-top:1.4rem;font-size:1.05rem}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--line)}
+  .stat b{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:500;display:block;line-height:1}
+  .stat span{font-size:.82rem;color:var(--muted)}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:step}
+  .step{padding:2rem 1.6rem;border-top:1px solid var(--espresso);position:relative}
+  .step::before{counter-increment:step;content:"0" counter(step);font-family:var(--serif);font-style:italic;font-size:3rem;color:var(--rose-deep);display:block;margin-bottom:1rem;line-height:1}
+  .step h3{font-size:1.6rem;margin-bottom:.5rem}
+  .step p{color:var(--muted);font-size:.93rem}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:1rem}
+  .tile{border-radius:22px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.2rem;color:var(--cream);transition:transform .5s var(--ease)}
+  .tile:hover{transform:scale(.98)}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(31,21,18,.55),transparent 55%)}
+  .tile span{position:relative;z-index:1;font-family:var(--serif);font-size:1.4rem;font-style:italic}
+  .tile.t1{grid-row:span 2;background:radial-gradient(80% 60% at 40% 30%,#fff1e8,transparent 60%),linear-gradient(170deg,#e9c7b5,#b9776a)}
+  .tile.t2{background:radial-gradient(circle at 70% 30%,#f6dfc6,transparent 50%),linear-gradient(135deg,#c98f7a,#3a2a24)}
+  .tile.t3{grid-column:span 2;background:radial-gradient(60% 90% at 20% 50%,#fbe7dc,transparent 60%),linear-gradient(90deg,#f3dfd4,#d9a38e 60%,#8d5b4c)}
+  .tile.t4{background:linear-gradient(200deg,#b98d58,#5b3e2c)}
+  .tile.t5{grid-column:span 2;background:radial-gradient(70% 90% at 80% 40%,#fff6ef,transparent 55%),linear-gradient(120deg,#8d5b4c,#e9c7b5)}
+  .insta-cta{margin-top:2.2rem;display:flex;justify-content:center}
+
+  /* testimonials */
+  .testi{background:var(--espresso);color:var(--cream);border-radius:48px;margin:0 16px;overflow:hidden;position:relative}
+  .testi::before{content:"“";position:absolute;font-family:var(--serif);font-size:32rem;line-height:1;color:rgba(233,199,181,.06);top:-4rem;left:2rem}
+  .testi .eyebrow{color:var(--rose)}
+  .testi-slider{position:relative;min-height:280px}
+  .t-card{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);pointer-events:none}
+  .t-card.active{opacity:1;transform:none;pointer-events:auto}
+  .t-card blockquote{font-family:var(--serif);font-size:clamp(1.8rem,3.8vw,3rem);line-height:1.2;max-width:58rem}
+  .t-card cite{display:flex;align-items:center;gap:1rem;margin-top:2rem;font-style:normal;font-size:.9rem;color:rgba(250,244,239,.7)}
+  .t-card cite b{color:var(--cream);display:block}
+  .t-card cite i{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose-deep))}
+  .t-nav{display:flex;gap:.6rem;margin-top:2.6rem}
+  .t-nav button{width:40px;height:4px;border-radius:4px;border:0;background:rgba(250,244,239,.2);cursor:pointer;transition:background .3s,width .3s}
+  .t-nav button.active{background:var(--rose);width:64px}
+
+  /* pricing / menu */
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 4rem}
+  .menu-item{display:flex;align-items:baseline;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--line)}
+  .menu-item h4{font-family:var(--serif);font-size:1.5rem;font-weight:500}
+  .menu-item small{display:block;color:var(--muted);font-size:.84rem;font-family:var(--sans)}
+  .menu-item .dots{flex:1;border-bottom:1px dotted rgba(31,21,18,.3);transform:translateY(-6px)}
+  .menu-item .price{font-weight:600;font-size:.95rem;white-space:nowrap}
+  .menu-note{margin-top:1.6rem;font-size:.85rem;color:var(--muted)}
+
+  /* faq */
+  .faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem}
+  details{border-bottom:1px solid var(--line);padding:1.4rem 0}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;font-family:var(--serif);font-size:1.5rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:var(--sans);font-weight:300;font-size:1.6rem;line-height:1;transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--muted);margin-top:.8rem;max-width:40rem}
+
+  /* booking */
+  .book{padding-bottom:40px}
+  .book-card{border-radius:48px;padding:clamp(2rem,6vw,5rem);background:
+     radial-gradient(60% 80% at 100% 0%,rgba(255,255,255,.55),transparent 60%),
+     linear-gradient(135deg,var(--rose),var(--blush) 60%,#f7e9dc);display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;position:relative;overflow:hidden}
+  .book-card h2{font-size:clamp(2.6rem,6vw,5rem)}
+  .book-card p{color:var(--cocoa);margin-top:1rem;max-width:28rem}
+  .contact-list{margin-top:2rem;display:grid;gap:.8rem;font-size:.95rem}
+  .contact-list a{display:flex;align-items:center;gap:.8rem}
+  .contact-list a svg{width:20px;height:20px;stroke:var(--espresso);fill:none;stroke-width:1.5;flex:none}
+  form{background:rgba(255,255,255,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:28px;padding:2rem;display:grid;gap:1rem}
+  label{font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:grid;gap:.4rem}
+  input,select,textarea{font:inherit;font-size:1rem;letter-spacing:0;text-transform:none;color:var(--espresso);background:transparent;border:0;border-bottom:1px solid rgba(31,21,18,.25);padding:.6rem 0;outline:none;transition:border-color .3s;width:100%;border-radius:0}
+  input:focus,select:focus,textarea:focus{border-color:var(--espresso)}
+  textarea{resize:vertical;min-height:70px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  form .btn{justify-content:center;margin-top:.6rem}
+  .form-note{font-size:.78rem;color:var(--muted);text-align:center}
+
+  /* footer */
+  footer{padding:60px 0 40px}
+  .foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:end;border-top:1px solid var(--line);padding-top:2.4rem}
+  .foot-logo{font-family:var(--serif);font-size:clamp(4rem,14vw,11rem);line-height:.85;letter-spacing:-.03em}
+  .foot-logo span{font-style:italic;color:var(--rose-deep)}
+  .foot-links{display:flex;gap:1.6rem;flex-wrap:wrap;font-size:.9rem}
+  .copy{font-size:.8rem;color:var(--muted);margin-top:2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+  /* sticky mobile book */
+  .sticky-book{position:fixed;left:16px;right:16px;bottom:16px;z-index:45;display:none;justify-content:center;box-shadow:0 20px 40px -12px rgba(31,21,18,.5)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+  /* cursor glow (desktop) */
+  .cursor{position:fixed;width:280px;height:280px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(233,199,181,.35),transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s;opacity:0}
+
+  @media (max-width:960px){
+    .nav-links,.nav .btn{display:none}
+    .burger{display:block}
+    .hero-grid,.about-grid,.faq-grid,.book-card{grid-template-columns:1fr}
+    .hero-art{justify-self:center;max-width:380px;margin-top:1rem}
+    .chip.c1{left:-8px}.chip.c2{right:-8px}
+    .services-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+    .tile.t3,.tile.t5{grid-column:span 2}
+    .menu-grid{grid-template-columns:1fr}
+    .about-visual{margin-inline:auto;width:100%}
+    .sticky-book{display:flex}
+    footer{padding-bottom:100px}
+  }
+  @media (max-width:600px){
+    .services-grid,.steps{grid-template-columns:1fr}
+    .svc{min-height:260px}
+    .row2{grid-template-columns:1fr}
+    .about,.testi{border-radius:32px;margin:0 8px}
+    .book-card{border-radius:32px}
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .spin-badge{width:92px;height:92px;right:-6px;top:-10px}
+    .chip{font-size:.74rem;padding:.7rem .8rem}
+    .chip .dot{width:30px;height:30px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .hero h1 .line>span{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">Bliss<span>X</span></a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#book" class="btn btn-dark">Book now <span class="arrow">→</span></a>
+    <button class="burger" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#menu">Menu</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#faq">FAQ</a>
+  <a href="#book">Book now →</a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">✦ Luxury beauty studio</span>
+      <h1>
+        <span class="line"><span>Your glow,</span></span>
+        <span class="line"><span><em>beautifully</em></span></span>
+        <span class="line"><span>crafted.</span></span>
+      </h1>
+      <p class="lead">Skin, lashes, brows, nails and bridal artistry — delivered with care, precision and a little bit of magic. Walk in as you are. Leave in bliss.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-dark">Book your appointment <span class="arrow">→</span></a>
+        <a href="#services" class="btn btn-ghost">Explore services</a>
+      </div>
+      <div class="hero-proof">
+        <div class="avatars">
+          <i style="background:linear-gradient(135deg,#e9c7b5,#c98f7a)"></i>
+          <i style="background:linear-gradient(135deg,#b98d58,#3a2a24)"></i>
+          <i style="background:linear-gradient(135deg,#f3dfd4,#d9a38e)"></i>
+          <i style="background:linear-gradient(135deg,#c98f7a,#1f1512)"></i>
+        </div>
+        <div><span class="stars">★★★★★</span><br>Loved by hundreds of glowing clients</div>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="arch">
+        <div class="glow-orb"></div>
+        <svg viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 380 C 100 330, 180 440, 400 360 L400 500 L0 500 Z" fill="rgba(31,21,18,.10)"/>
+          <path d="M0 420 C 120 380, 240 480, 400 410 L400 500 L0 500 Z" fill="rgba(31,21,18,.14)"/>
+        </svg>
+      </div>
+      <svg class="spin-badge" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+        <circle cx="60" cy="60" r="58" fill="#1f1512"/>
+        <text font-family="Manrope" font-size="10.5" letter-spacing="3.2" fill="#e9c7b5" font-weight="600"><textPath href="#circ">BOOK · YOUR · GLOW · BLISSX · BEAUTY ·</textPath></text>
+        <text x="60" y="68" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-size="26" fill="#faf4ef">✦</text>
+      </svg>
+      <div class="chip c1"><span class="dot">✦</span><div><b>Signature Glow</b>Facial ritual</div></div>
+      <div class="chip c2"><span class="dot">★</span><div><b>5.0 rating</b>Client favourite</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Hydra Facials</span><span>Lash Lifts</span><span>Brow Lamination</span><span>Bridal Glam</span><span>Gel Nails</span><span>Skin Rituals</span><span>Party Makeup</span>
+    <span>Hydra Facials</span><span>Lash Lifts</span><span>Brow Lamination</span><span>Bridal Glam</span><span>Gel Nails</span><span>Skin Rituals</span><span>Party Makeup</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">What we do</span>
+        <h2>Treatments made<br>for <em>you</em>.</h2>
+      </div>
+      <p>Every appointment begins with a consultation, so your treatment is tailored to your skin, your features and the look you love.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="svc reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 14.5c1 1 2.2 1.5 3.5 1.5s2.5-.5 3.5-1.5"/><circle cx="9" cy="10" r=".6"/><circle cx="15" cy="10" r=".6"/></svg></div>
+        <h3>Skin &amp; Facials</h3>
+        <p>Hydrating, brightening and deep-cleansing rituals that leave skin glass-smooth and radiant.</p>
+        <span class="svc-price">Glow rituals</span>
+      </article>
+      <article class="svc reveal d1">
+        <span class="svc-num">02</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 13c3-4 15-4 18 0"/><path d="M6 12l-1-3M9 11l-.5-3.2M12 10.8V7.5M15 11l.5-3.2M18 12l1-3"/></svg></div>
+        <h3>Lashes</h3>
+        <p>Classic, hybrid and volume extensions, plus lash lifts &amp; tints for effortless flutter.</p>
+        <span class="svc-price">Wake up ready</span>
+      </article>
+      <article class="svc reveal d2">
+        <span class="svc-num">03</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 12c4-4 10-5 18-2"/><path d="M4 15c4-2 9-3 15-1"/></svg></div>
+        <h3>Brows</h3>
+        <p>Shaping, threading, lamination and tinting to frame your face perfectly.</p>
+        <span class="svc-price">Frame your face</span>
+      </article>
+      <article class="svc reveal">
+        <span class="svc-num">04</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="12" rx="4"/><path d="M12 15v6M9 21h6"/></svg></div>
+        <h3>Nails</h3>
+        <p>Gel, BIAB, extensions and nail art — flawless manicures &amp; pedicures that last.</p>
+        <span class="svc-price">Polished perfection</span>
+      </article>
+      <article class="svc reveal d1">
+        <span class="svc-num">05</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.6L12 15.7 7.1 18.3l.9-5.6-4-3.9 5.6-.8z"/></svg></div>
+        <h3>Bridal &amp; Glam</h3>
+        <p>Bridal, engagement and party makeup with long-wear products and trials available.</p>
+        <span class="svc-price">Your big day</span>
+      </article>
+      <article class="svc reveal d2">
+        <span class="svc-num">06</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 21c-5-3-8-7-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 4-3 8-8 11z"/></svg></div>
+        <h3>Waxing &amp; Care</h3>
+        <p>Gentle, hygienic waxing and body care treatments for silky, smooth confidence.</p>
+        <span class="svc-price">Smooth &amp; soft</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <div class="blob"></div>
+      <div class="quote">“Beauty is<br>how you feel<br>when you leave.”</div>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">The BlissX experience</span>
+      <h2>Where self-care<br>feels like <em>bliss</em>.</h2>
+      <p>BlissX Beauty was created for people who want more than a quick appointment. We combine skilled, certified hands with premium products and a calm, beautiful space — so every visit feels like a little escape.</p>
+      <p>From everyday maintenance to once-in-a-lifetime bridal moments, we listen first, then create looks that feel unmistakably <em>you</em>.</p>
+      <div class="stats">
+        <div class="stat"><b data-count="500">0</b><span>Happy clients</span></div>
+        <div class="stat"><b data-count="30">0</b><span>Treatments</span></div>
+        <div class="stat"><b data-count="5" data-suffix="★">0</b><span>Avg. rating</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">How it works</span>
+        <h2>Four steps to<br>your <em>glow</em>.</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Book</h3><p>Choose your treatment and a time that suits you — online, by DM or on WhatsApp.</p></div>
+      <div class="step reveal d1"><h3>Consult</h3><p>We chat about your skin, style and goals, and tailor every detail to you.</p></div>
+      <div class="step reveal d2"><h3>Unwind</h3><p>Relax in our calm studio while we work our magic with premium products.</p></div>
+      <div class="step reveal d3"><h3>Glow</h3><p>Leave with aftercare tips and a look you'll want to show off everywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="wrap">
+    <span class="eyebrow">Kind words</span>
+    <div class="testi-slider" style="margin-top:2rem">
+      <div class="t-card active">
+        <blockquote>“My skin has never looked this good. The facial was so relaxing and the glow lasted for days — everyone asked what I'd done!”</blockquote>
+        <cite><i></i><div><b>Priya S.</b>Signature Glow Facial</div></cite>
+      </div>
+      <div class="t-card">
+        <blockquote>“Did my bridal makeup and I felt like the most beautiful version of myself. It stayed perfect from the ceremony to the last dance.”</blockquote>
+        <cite><i></i><div><b>Ananya R.</b>Bridal Glam</div></cite>
+      </div>
+      <div class="t-card">
+        <blockquote>“Best lash lift I've ever had. Super clean studio, so gentle and the attention to detail is unreal. I'm a client for life.”</blockquote>
+        <cite><i></i><div><b>Meera K.</b>Lash Lift &amp; Tint</div></cite>
+      </div>
+    </div>
+    <div class="t-nav" role="tablist" aria-label="Testimonials">
+      <button class="active" aria-label="Testimonial 1"></button>
+      <button aria-label="Testimonial 2"></button>
+      <button aria-label="Testimonial 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Treatment menu</span>
+        <h2>Signature <em>favourites</em>.</h2>
+      </div>
+      <p>A taste of our most-loved treatments. Message us for the full menu and current offers.</p>
+    </div>
+    <div class="menu-grid reveal">
+      <div class="menu-item"><div><h4>Signature Glow Facial</h4><small>Cleanse · exfoliate · mask · massage · 60 min</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Hydra Facial</h4><small>Deep hydration &amp; instant radiance · 45 min</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Lash Lift &amp; Tint</h4><small>Natural curl lasting 6–8 weeks · 50 min</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Lash Extensions</h4><small>Classic · hybrid · volume</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Brow Lamination</h4><small>Includes shape &amp; tint · 45 min</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Gel / BIAB Manicure</h4><small>Long-lasting shine, nail art add-ons</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Party Makeup</h4><small>Soft glam to full glam</small></div><span class="dots"></span><span class="price">On request</span></div>
+      <div class="menu-item"><div><h4>Bridal Package</h4><small>Trial + wedding-day makeup &amp; hair</small></div><span class="dots"></span><span class="price">On request</span></div>
+    </div>
+    <p class="menu-note reveal">Prices vary by length and add-ons — DM us on Instagram for today's rates and packages.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">@blissx.beauty</span>
+        <h2>Fresh from the <em>feed</em>.</h2>
+      </div>
+      <p>See our latest transformations, behind-the-scenes and client glow-ups on Instagram.</p>
+    </div>
+    <div class="gallery">
+      <a class="tile t1 reveal" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener"><span>Bridal glow</span></a>
+      <a class="tile t2 reveal d1" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener"><span>Lashes</span></a>
+      <a class="tile t3 reveal d2" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener"><span>Skin rituals</span></a>
+      <a class="tile t4 reveal" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener"><span>Brows</span></a>
+      <a class="tile t5 reveal d1" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener"><span>Nail art</span></a>
+    </div>
+    <div class="insta-cta reveal">
+      <a class="btn btn-ghost" href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener">Follow @blissx.beauty <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div class="reveal">
+      <span class="eyebrow">Good to know</span>
+      <h2>Questions,<br><em>answered</em>.</h2>
+    </div>
+    <div class="reveal d1">
+      <details open><summary>How do I book an appointment?</summary><p>Fill in the booking form below, send us a DM on Instagram, or message us on WhatsApp. We'll confirm your slot as soon as possible.</p></details>
+      <details><summary>Do you offer bridal trials?</summary><p>Yes! We recommend booking your bridal trial 4–8 weeks before the big day so we can perfect your look together.</p></details>
+      <details><summary>Which products do you use?</summary><p>We use premium, skin-friendly professional products and always adapt to sensitive skin. Let us know about any allergies when booking.</p></details>
+      <details><summary>What is your cancellation policy?</summary><p>Please give us at least 24 hours' notice if you need to reschedule or cancel, so we can offer the slot to another client.</p></details>
+      <details><summary>Do you have gift vouchers?</summary><p>Absolutely — treat someone you love to a little bliss. Message us to arrange a voucher for any treatment or amount.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book" class="book">
+  <div class="wrap">
+    <div class="book-card reveal">
+      <div>
+        <span class="eyebrow" style="color:var(--cocoa)">Book your glow</span>
+        <h2>Ready for your<br><em>bliss</em> moment?</h2>
+        <p>Tell us what you'd love and when — we'll reply to confirm your appointment. Prefer to chat? DM us any time.</p>
+        <div class="contact-list">
+          <a href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg>
+            @blissx.beauty
+          </a>
+          <a href="#" class="js-whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 1c-1-.4-1.6-1-2-2l1-1-1-2z"/></svg>
+            <span class="js-phone-label">WhatsApp us</span>
+          </a>
+        </div>
+      </div>
+      <form id="bookForm" novalidate>
+        <div class="row2">
+          <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" placeholder="Your number"></label>
+        </div>
+        <label>Treatment
+          <select name="service" required>
+            <option value="">Choose a treatment</option>
+            <option>Skin &amp; Facials</option>
+            <option>Lashes</option>
+            <option>Brows</option>
+            <option>Nails</option>
+            <option>Bridal &amp; Glam</option>
+            <option>Waxing &amp; Care</option>
+          </select>
+        </label>
+        <div class="row2">
+          <label>Preferred date<input name="date" type="date"></label>
+          <label>Preferred time
+            <select name="time"><option>Morning</option><option>Afternoon</option><option>Evening</option></select>
+          </label>
+        </div>
+        <label>Notes<textarea name="notes" placeholder="Anything we should know?"></textarea></label>
+        <button class="btn btn-dark" type="submit">Request appointment <span class="arrow">→</span></button>
+        <p class="form-note" id="formNote">We'll open WhatsApp with your request ready to send.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-logo">Bliss<span>X</span></div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#menu">Menu</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://www.instagram.com/blissx.beauty" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+    <div class="copy"><span>© <span id="year"></span> BlissX Beauty. All rights reserved.</span><span>Made with love &amp; a little glow ✦</span></div>
+  </div>
+</footer>
+
+<a href="#book" class="btn btn-dark sticky-book">Book your glow <span class="arrow">→</span></a>
+
+<script>
+  // ---- Business settings: edit these ----
+  const CONFIG = {
+    whatsapp: "",               // international format, digits only, e.g. "919876543210"
+    instagram: "blissx.beauty",
+  };
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // WhatsApp / Instagram fallback
+  const waLink = (text) => CONFIG.whatsapp
+    ? `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`
+    : `https://ig.me/m/${CONFIG.instagram}`;
+  document.querySelectorAll('.js-whatsapp').forEach(a => {
+    a.href = waLink("Hi BlissX Beauty! I'd like to book an appointment.");
+    a.target = "_blank"; a.rel = "noopener";
+    if (!CONFIG.whatsapp) a.querySelector('.js-phone-label').textContent = 'Message us on Instagram';
+  });
+  if (!CONFIG.whatsapp) document.getElementById('formNote').textContent = "We'll open Instagram DMs so you can send your request.";
+
+  // Booking form
+  document.getElementById('bookForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    if (!f.get('name') || !f.get('service')) {
+      document.getElementById('formNote').textContent = 'Please add your name and choose a treatment ✦';
+      return;
+    }
+    const msg = `Hi BlissX Beauty! ✨\nName: ${f.get('name')}\nPhone: ${f.get('phone') || '-'}\nTreatment: ${f.get('service')}\nDate: ${f.get('date') || 'Flexible'} (${f.get('time')})\nNotes: ${f.get('notes') || '-'}`;
+    if (!CONFIG.whatsapp && navigator.clipboard) navigator.clipboard.writeText(msg).catch(() => {});
+    window.open(waLink(msg), '_blank', 'noopener');
+    document.getElementById('formNote').textContent = CONFIG.whatsapp
+      ? 'Opening WhatsApp — just hit send! 💕'
+      : 'Your request is copied — paste it into our Instagram DM 💕';
+  });
+
+  // Mobile menu
+  const burger = document.querySelector('.burger'), menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Hide nav on scroll down
+  let lastY = 0; const nav = document.querySelector('.nav');
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    nav.style.transform = (y > lastY && y > 300 && !menu.classList.contains('open')) ? 'translateY(-140%)' : '';
+    lastY = y;
+  }, {passive:true});
+
+  // Reveal on scroll + counters
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    en.target.querySelectorAll('[data-count]').forEach(el => {
+      const end = +el.dataset.count, suf = el.dataset.suffix || '+', t0 = performance.now();
+      const tick = t => { const p = Math.min((t - t0) / 1600, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    });
+    io.unobserve(en.target);
+  }), {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Testimonials
+  const cards = document.querySelectorAll('.t-card'), dots = document.querySelectorAll('.t-nav button');
+  let ti = 0, timer;
+  const show = i => { cards.forEach((c,k) => c.classList.toggle('active', k===i)); dots.forEach((d,k) => d.classList.toggle('active', k===i)); ti = i; };
+  const auto = () => { clearInterval(timer); timer = setInterval(() => show((ti + 1) % cards.length), 6000); };
+  dots.forEach((d,i) => d.addEventListener('click', () => { show(i); auto(); }));
+  auto();
+
+  // Cursor glow (fine pointers only)
+  if (matchMedia('(pointer:fine)').matches) {
+    const c = document.querySelector('.cursor');
+    addEventListener('mousemove', e => { c.style.opacity = 1; c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; });
+  }
+</script>
+</body>
+</html>
